@@ -11,7 +11,7 @@ import SwiftUI
 struct PadulatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(calcData: keyData())
         }
     }
 }

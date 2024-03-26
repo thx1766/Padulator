@@ -7,49 +7,53 @@
 
 import SwiftUI
 
+struct keyData {
+    var readout: Double = 0.0
+    var firstOperand: Double = 0.0
+    var secondOperand: Double = 0.0
+    var result: Double = 0.0
+    var operation: calculatorOperation = .unselected
+    var decimalPrecision: Int = -1
+    var calulatorOperand: calculatorOperands = .firstOperand
+}
+
 struct ContentView: View {
     let fontScale = 120
-    @State var readout: Double = 0.0
-    @State var firstOperand: Double = 0.0
-    @State var secondOperand: Double = 0.0
-    @State var result: Double = 0.0
-    @State var operation: calculatorOperation = .unselected
-    @State var decimalPrecision: Int = -1
-    @State var calulatorOperand: calculatorOperands = .firstOperand
+    @State var calcData: keyData
     var body: some View {
         VStack {
-            Text("\(readout)")
+            Text("\(calcData.readout)")
                 .font(.system(size: CGFloat(fontScale)))
                 .padding()
             HStack {
-                CalculatorKey(key: "C", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "+/-", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "%", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "AC", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
+                CalculatorKey(key: "C", color: .orange, keyInfo: $calcData)
+                CalculatorKey(key: "+/-", color: .orange, keyInfo: $calcData)
+                CalculatorKey(key: "%", color: .orange, keyInfo: $calcData)
+                CalculatorKey(key: "AC", color: .orange, keyInfo: $calcData)
             }
             HStack {
-                CalculatorKey(key: "7", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "8", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "9", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "/", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
+                CalculatorKey(key: "7", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "8", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "9", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "/", color: .orange, keyInfo: $calcData)
             }
             HStack {
-                CalculatorKey(key: "4", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "5", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "6", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "X", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
+                CalculatorKey(key: "4", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "5", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "6", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "X", color: .orange, keyInfo: $calcData)
             }
             HStack {
-                CalculatorKey(key: "1", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "2", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "3", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "-", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
+                CalculatorKey(key: "1", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "2", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "3", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "-", color: .orange, keyInfo: $calcData)
             }
             HStack {
-                CalculatorKey(key: "0", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: ".", color: .gray, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "=", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
-                CalculatorKey(key: "+", color: .orange, readout: $readout, firstOperand: $firstOperand, secondOperand: $secondOperand, result: $result, operation: $operation, decimalPrecision: $decimalPrecision, operand: $calulatorOperand)
+                CalculatorKey(key: "0", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: ".", color: .gray, keyInfo: $calcData)
+                CalculatorKey(key: "=", color: .orange, keyInfo: $calcData)
+                CalculatorKey(key: "+", color: .orange, keyInfo: $calcData)
             }
         }
         //.padding()
@@ -71,92 +75,86 @@ enum calculatorOperands: String {
 struct CalculatorKey: View {
     @State var key: String
     @State var color: Color
-    @Binding var readout: Double
-    @Binding var firstOperand: Double
-    @Binding var secondOperand: Double
-    @Binding var result: Double
-    @Binding var operation: calculatorOperation
-    @Binding var decimalPrecision: Int
-    @Binding var operand: calculatorOperands
-    
+    @Binding var keyInfo: keyData
+
     var body: some View {
         Button(action: {
             print("Button pressed")
             switch key {
             case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-                if decimalPrecision == -1 {
-                    readout = (readout * 10) + Double(key)!
+                if keyInfo.decimalPrecision == -1 {
+                    keyInfo.readout = (keyInfo.readout * 10) + Double(key)!
                 }
                 else{
-                    readout = readout + ( Double(key)! / (10*Double(decimalPrecision)))
-                    decimalPrecision = decimalPrecision + 1
+                    keyInfo.readout = keyInfo.readout + ( Double(key)! / (10*Double(keyInfo.decimalPrecision)))
+                    keyInfo.decimalPrecision = keyInfo.decimalPrecision + 1
                 }
             case "+":
-                operand = .secondOperand
-                firstOperand = Double(readout)
-                readout = 0.0
-                decimalPrecision = -1
-                operation = .addition
+                keyInfo.calulatorOperand = .secondOperand
+                keyInfo.firstOperand = Double(keyInfo.readout)
+                keyInfo.readout = 0.0
+                keyInfo.decimalPrecision = -1
+                keyInfo.operation = .addition
             case "-":
-                operand = .secondOperand
-                firstOperand = Double(readout)
-                readout = 0.0
-                decimalPrecision = -1
-                operation = .subtraction
+                keyInfo.calulatorOperand = .secondOperand
+                keyInfo.firstOperand = Double(keyInfo.readout)
+                keyInfo.readout = 0.0
+                keyInfo.decimalPrecision = -1
+                keyInfo.operation = .subtraction
             case "X":
-                operand = .secondOperand
-                firstOperand = Double(readout)
-                readout = 0.0
-                decimalPrecision = -1
-                operation = .multiplication
+                keyInfo.calulatorOperand = .secondOperand
+                keyInfo.firstOperand = Double(keyInfo.readout)
+                keyInfo.readout = 0.0
+                keyInfo.decimalPrecision = -1
+                keyInfo.operation = .multiplication
             case "/":
-                operand = .secondOperand
-                firstOperand = Double(readout)
-                readout = 0.0
-                decimalPrecision = -1
-                operation = .division
+                keyInfo.calulatorOperand = .secondOperand
+                keyInfo.firstOperand = Double(keyInfo.readout)
+                keyInfo.readout = 0.0
+                keyInfo.decimalPrecision = -1
+                keyInfo.operation = .division
             case "=":
-                operand = .firstOperand
-                secondOperand = Double(readout)
-                switch operation {
+                keyInfo.calulatorOperand = .firstOperand
+                keyInfo.secondOperand = Double(keyInfo.readout)
+                switch keyInfo.operation {
                 case .addition:
-                    result = firstOperand + secondOperand
+                    keyInfo.result = keyInfo.firstOperand + keyInfo.secondOperand
                 case .subtraction:
-                    result = firstOperand - secondOperand
+                    keyInfo.result = keyInfo.firstOperand - keyInfo.secondOperand
                 case .multiplication:
-                    result = firstOperand * secondOperand
+                    keyInfo.result = keyInfo.firstOperand * keyInfo.secondOperand
                 case .division:
-                    result = firstOperand / (secondOperand == 0.0 ? 0.0001 : secondOperand)
+                    keyInfo.result = keyInfo.firstOperand / (keyInfo.secondOperand == 0.0 ? 0.0001 : keyInfo.secondOperand)
                 case .unselected:
-                    result = 0.0
+                    keyInfo.result = 0.0
                 }
-                readout = result
-                firstOperand = 0.0
-                secondOperand = 0.0
-                result = 0.0
-                print("result: \(result)")
+                keyInfo.readout = keyInfo.result
+                keyInfo.firstOperand = 0.0
+                keyInfo.secondOperand = 0.0
+                keyInfo.result = 0.0
+                print("result: \(keyInfo.result)")
             case ".":
-                decimalPrecision = 1
+                keyInfo.decimalPrecision = 1
                 print("decimalPrecision")
             case "AC":
-                operand = .firstOperand
-                firstOperand = 0.0
-                secondOperand = 0.0
-                result = 0.0
-                readout = 0.0
+                keyInfo.calulatorOperand = .firstOperand
+                keyInfo.firstOperand = 0.0
+                keyInfo.secondOperand = 0.0
+                keyInfo.result = 0.0
+                keyInfo.readout = 0.0
             case "C":
-                switch operand {
+                switch keyInfo.calulatorOperand {
                 case .firstOperand:
-                    firstOperand = 0.0
-                    readout = 0.0
+                    keyInfo.firstOperand = 0.0
+                    keyInfo.readout = 0.0
                 case .secondOperand:
-                    secondOperand = 0.0
-                    readout = 0.0
+                    keyInfo.secondOperand = 0.0
+                    keyInfo.readout = 0.0
                 }
             case "+/-":
-                readout = -1 * readout
+                keyInfo.readout = -1 * keyInfo.readout
             case "%":
-                readout = readout / 100
+                keyInfo.readout = keyInfo.readout / 100
             default:
                 print("oops")
             }
@@ -171,5 +169,5 @@ struct CalculatorKey: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(calcData: keyData())
 }
