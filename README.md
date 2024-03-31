@@ -1,0 +1,1 @@
+A super-basic calculator app for iPad![Simulator Screenshot - iPad Pro (12 9-inch) (6th generation) - 2024-03-31 at 08 57 11](https://github.com/thx1766/Padulator/assets/6318596/648cb6f4-529d-406c-ada4-01cc89908f72)
